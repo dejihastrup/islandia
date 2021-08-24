@@ -1,44 +1,52 @@
 <h1>Welcome to <%= @island.name %></h1>
-<h3>Price: <%= @island.price %>$</h3>
-<h3>Located at: <%= @island.location %></h3>
-<h3>Size: <%= @island.squarekm %></h3>
-<h3>Number of villas: <%= @island.number_of_villas%></h3>
-<h3>Guests: <%= @island.guests%></h3>
 
-<div class="wifi">
-  <% if @island.wifi === true %>
-      <h3>Wifi is available</h3>
-  <% else  %>
-      <h3>Wifi not available</h3>
-  <% end %>
+<div class = "main-details">
+  <h5>Price: <%= @island.price %>$</h5>
+  <h5>Located at: <%= @island.location %></h5>
+  <h5>Size: <%= @island.squarekm %></h5>
+  <h5>Number of villas: <%= @island.number_of_villas%></h5>
+  <h5>Guests: <%= @island.guests%></h5>
 </div>
 
-<div class="helicopter">
-  <% if @island.helicopter === true %>
-      <h3>Helicopter is available</h3>
-  <% else  %>
-      <h3>Helicopter not available</h3>
-  <% end %>
+<div class = "additionals">
+  <div id = "wifi">
+    <% if @island.wifi === true %>
+        <h5>Wifi is available</h5>
+    <% else  %>
+        <h5>Wifi not available</h5>
+    <% end %>
+  </div>
+
+  <div id = "helicopter">
+    <% if @island.helicopter === true %>
+        <h5>Helicopter is available</h5>
+    <% else  %>
+        <h5>Helicopter not available</h5>
+    <% end %>
+  </div>
+
+  <div id = "golf_course">
+    <% if @island.golf_course === true %>
+        <h5>Golf is available</h5>
+    <% else  %>
+        <h5>Golf not available</h5>
+    <% end %>
+  </div>
+
+  <div id = "private_chef">
+    <% if @island.private_chef === true %>
+        <h5>Chef is available</h5>
+    <% else  %>
+        <h5>Chef not available</h5>
+    <% end %>
+  </div>
+
+  <h5>Butlers: <%= @island.butlers%></h5>
+  <h5>Yachts: <%= @island.yachts%></h5>
 </div>
 
-<div class="golf_course">
-  <% if @island.golf_course === true %>
-      <h3>Golf is available</h3>
-  <% else  %>
-      <h3>Golf not available</h3>
-  <% end %>
-</div>
 
-<div class="private_chef">
-  <% if @island.private_chef === true %>
-      <h3>Chef is available</h3>
-  <% else  %>
-      <h3>Chef not available</h3>
-  <% end %>
-</div>
-
-<h3>Butlers: <%= @island.butlers%></h3>
-<h3>Yachts: <%= @island.yachts%></h3>
+<h4>Book Now</h4>
 
 
 <% @island.photos.each do |photo| %>
