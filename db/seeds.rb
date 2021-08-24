@@ -5,6 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+20.times do
+  user = User.new(
+    email: Faker::Internet.email ,
+    password: 'grumble'
+  )
+  user.save!
+end
 
 20.times do
   island = Island.new(
@@ -19,7 +26,8 @@
     golf_course: [true, false].sample,
     private_chef: [true, false].sample,
     butlers: rand(30..60),
-    yachts: rand(10..20)
+    yachts: rand(10..20),
+    user: User.all.sample
   )
-  island.save
+  island.save!
 end
