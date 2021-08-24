@@ -1,9 +1,45 @@
-<h1><%= @island.name %></h1>
-<h1><%= @island.price %></h1>
-<h1><%= @island.location %></h1>
-<h1><%= @island.squarekm %></h1>
-<h1><%= @island.number_of_villas%></h1>
-<h1><%= @island.guests%></h1>
+<h1>Welcome to <%= @island.name %></h1>
+<h3>Price: <%= @island.price %>$</h3>
+<h3>Located at: <%= @island.location %></h3>
+<h3>Size: <%= @island.squarekm %></h3>
+<h3>Number of villas: <%= @island.number_of_villas%></h3>
+<h3>Guests: <%= @island.guests%></h3>
+
+<div class="wifi">
+  <% if @island.wifi === true %>
+      <h3>Wifi is available</h3>
+  <% else  %>
+      <h3>Wifi not available</h3>
+  <% end %>
+</div>
+
+<div class="helicopter">
+  <% if @island.helicopter === true %>
+      <h3>Helicopter is available</h3>
+  <% else  %>
+      <h3>Helicopter not available</h3>
+  <% end %>
+</div>
+
+<div class="golf_course">
+  <% if @island.golf_course === true %>
+      <h3>Golf is available</h3>
+  <% else  %>
+      <h3>Golf not available</h3>
+  <% end %>
+</div>
+
+<div class="private_chef">
+  <% if @island.private_chef === true %>
+      <h3>Chef is available</h3>
+  <% else  %>
+      <h3>Chef not available</h3>
+  <% end %>
+</div>
+
+<h3>Butlers: <%= @island.butlers%></h3>
+<h3>Yachts: <%= @island.yachts%></h3>
+
 
 <% @island.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
