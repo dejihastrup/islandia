@@ -1,0 +1,23 @@
+<%= simple_form_for(@island) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :price, input_html: { min: '0', step: 'any' } %>
+    <%= f.input :location %>
+    <%= f.input :squarekm, input_html: { min: '0', step: 'any' } %>
+    <%= f.input :number_of_villas, input_html: { min: '0', step: 1 } %>
+    <%= f.input :guests, input_html: { min: '0', step: 1 }  %>
+    <%= f.input :wifi %>
+    <%= f.input :helicopter %>
+    <%= f.input :golf_course %>
+    <%= f.input :private_chef %>
+    <%= f.input :butlers, input_html: { min: '0', step: 1 } %>
+    <%= f.input :yachts, input_html: { min: '0', step: 1 } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
