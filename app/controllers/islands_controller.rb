@@ -1,6 +1,6 @@
 class IslandsController < ApplicationController
   def index
-
+    @islands = Islands.all
   end
 
   def show
