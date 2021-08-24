@@ -1,0 +1,12 @@
+<h1>Islands:</h1>
+
+<div class="container">
+<ul>
+<% @islands.each do |i| %>
+  <li class="card"><%= link_to i.name, island_path(i), class: "link" %></li>
+<% end %>
+</ul>
+
+</div>
+
+<%= link_to 'Add an island', new_island_path %>
