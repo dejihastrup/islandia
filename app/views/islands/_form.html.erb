@@ -15,6 +15,7 @@
     <%= f.input :private_chef %>
     <%= f.input :butlers, input_html: { min: '0', step: 1 } %>
     <%= f.input :yachts, input_html: { min: '0', step: 1 } %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>
 
   <div class="form-actions">

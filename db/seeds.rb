@@ -29,7 +29,7 @@ end
     private_chef: [true, false].sample,
     butlers: rand(30..60),
     yachts: rand(10..20),
-    user: User.all.sample
+    user_id: User.all.sample.id
   )
   island.save!
 end
