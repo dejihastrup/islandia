@@ -2,13 +2,23 @@
 <div class="topnav" id="myTopnav">
 
 <div>
- <a href="#Islandia" class="active">Islandia</a>
+ <a href="" class="active">Islandia</a>
 
 </div>
 <div>
+
 <a href="">New booking</a>
-  <a href="">Contact</a>
-  <a href="">About</a>
+
+
+
+
+  <%= link_to "Explore", my_islands_path  %>
+
+  <%= link_to "Listing", new_island_path  %>
+
+
+
+
 
 </div>
 <div>
@@ -18,7 +28,16 @@
 <%= link_to "sign in", new_user_session_path %>
 
 
+
 <% end %>
+<%# #backgroundimage {
+background-image: url("image3.png");
+width: 100vw;
+height: 100vh;
+background-size: 100% 100%;
+background-repeat: no-repeat;
+position: relative;
+} %>
 
 </div>
 
