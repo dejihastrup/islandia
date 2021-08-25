@@ -1,6 +1,6 @@
 class IslandsController < ApplicationController
   def index
-    @islands = Island.all
+    @islands = Island.where.not(user_id: current_user.id)
   end
 
   def show
@@ -34,7 +34,9 @@ class IslandsController < ApplicationController
   end
 
   def destroy
-
+    @island = Island.find(params[:id])
+    @island.destroy
+    redirect_to my_islands_path
   end
 
   private

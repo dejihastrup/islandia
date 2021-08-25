@@ -2,8 +2,9 @@
 
 <div class="container">
   <ul>
-    <% @islands.each do |i| %>
-      <li class="card"><%= link_to i.name, island_path(i), class: "link" %></li>
+    <% @islands.each do |island| %>
+      <li class="card"><%= link_to island.name, island_path(island), class: "link" %>
+      <%= link_to "Delete Island", island_path(island), method: :delete,data: {confirm: "Are you sure?"} %></li>
     <% end %>
   </ul>
 </div>
