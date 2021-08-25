@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params) if params[:end_date] > params[:start_date]
+    @booking = Booking.new(booking_params)
     @booking.island = Island.find(params[:island_id])
     @booking.user = current_user
     @booking.confirmed = false
