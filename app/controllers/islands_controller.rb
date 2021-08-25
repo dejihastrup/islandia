@@ -26,11 +26,11 @@ class IslandsController < ApplicationController
   end
 
   def edit
-    @island = Island.find(params[:id])
+    @island = Island.find_by_id(params[:id])
   end
 
   def update
-    @island = Island.find(params[:id])
+    @island = Island.find_by_id(params[:id])
     @island = Island.update(island_params)
     redirect_to island_path(@island)
   end
