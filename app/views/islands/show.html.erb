@@ -1,10 +1,9 @@
 <div class="island-banner">
   <div class="island-banner-text">
     <h1>Welcome to <%= @island.name %></h1>
+    <h5>Host Contact: <%= @island.user.email %></h5>
   </div>
 </div>
-
-
 <div class = "main-details">
   <h5>Price: <%= @island.price %>$</h5>
   <h5>Located at: <%= @island.location %></h5>
@@ -50,9 +49,9 @@
   <h5>Yachts: <%= @island.yachts%></h5>
 </div>
 
-
-<h4><%= link_to "Book now!", new_island_booking_path(@island), class: "button" %></h4>
-
+<% unless current_user === @island.user %>
+  <h4><%= link_to "Book now!", new_island_booking_path(@island) %></h4>
+<% end %>
 
 <% @island.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>

@@ -1,10 +1,14 @@
 class IslandsController < ApplicationController
   def index
-    @islands = Island.all
+    @islands = Island.where.not(user_id: current_user.id)
   end
 
   def show
     @island = Island.find(params[:id])
+  end
+
+  def my_islands
+    @islands = Island.where(user_id: current_user.id)
   end
 
   def new
@@ -22,15 +26,19 @@ class IslandsController < ApplicationController
   end
 
   def edit
-
+    @island = Island.find(params[:id])
   end
 
   def update
-
+    @island = Island.find(params[:id])
+    @island = Island.update(island_params)
+    redirect_to island_path(@island)
   end
 
   def destroy
-
+    @island = Island.find(params[:id])
+    @island.destroy
+    redirect_to my_islands_path
   end
 
   private

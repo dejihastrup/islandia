@@ -1,8 +1,13 @@
 class BookingsController < ApplicationController
 
   def index
-    @bookings = Booking.all
-    # where current user = user
+    @bookings = Booking.where(user_id: current_user.id)
+  end
+
+  def requests
+    @bookings = Booking.all.select do |booking|
+      booking.island.user == current_user
+    end
   end
 
   def show
@@ -21,10 +26,17 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.confirmed = false
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to bookings_path
     else
       render :new
     end
+  end
+
+  def edit
+    # @booking = params[:booking_id]
+    # redirect_to show if @@booking.confirmed #visitor cannot edit if confirmed
+    # render: "host" if @booking.island.user = current_user #host can confirm or not confirm
+    #                                         #user can change booking details
   end
 
   def update
