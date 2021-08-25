@@ -1,0 +1,7 @@
+<div>
+  <%= @bookings.each do |booking|%>
+    <h3><%= booking.island.name %></h3>
+    <p><%= booking.confirmed ? "Confirmed! Enjoy your trip ☀️ " : "Your request is still being reviewed" %></p>
+    <p><%= booking.start_date %> - <%= booking.end_date %></p>
+  <% end %>
+</div>
