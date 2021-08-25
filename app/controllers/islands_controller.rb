@@ -9,7 +9,6 @@ class IslandsController < ApplicationController
 
   def my_islands
     @islands = Island.where(user_id: current_user.id)
-
   end
 
   def new
