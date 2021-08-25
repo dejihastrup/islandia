@@ -1,4 +1,9 @@
-<h1>Welcome to <%= @island.name %></h1>
+<div class="island-banner">
+  <div class="island-banner-text">
+    <h1>Welcome to <%= @island.name %></h1>
+  </div>
+</div>
+
 
 <div class = "main-details">
   <h5>Price: <%= @island.price %>$</h5>
@@ -46,7 +51,7 @@
 </div>
 
 
-<h4><%= link_to "Book now!", new_island_booking_path(@island) %></h4>
+<h4><%= link_to "Book now!", new_island_booking_path(@island), class: "button" %></h4>
 
 
 <% @island.photos.each do |photo| %>
