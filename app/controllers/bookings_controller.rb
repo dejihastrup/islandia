@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.island = Island.find(params[:island_id])
     @booking.user = current_user
+    @booking.confirmed = false
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -35,7 +36,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :confirmed, :user_id, :island_id, :created_at, :updated_at);
+    params.require(:booking).permit(:start_date, :end_date);
   end
    # t.datetime "created_at", precision: 6, null: false ???
    # t.datetime "updated_at", precision: 6, null: false ???
