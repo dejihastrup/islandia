@@ -4,6 +4,7 @@
     <h5>Host Contact: <%= @island.user.email %></h5>
   </div>
 </div>
+<div class="island_info">
 <div class = "main-details">
   <h5>Price: <%= @island.price %>$</h5>
   <h5>Located at: <%= @island.location %></h5>
@@ -56,3 +57,4 @@
 <% @island.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
+</div>
