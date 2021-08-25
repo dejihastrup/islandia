@@ -7,6 +7,11 @@ class IslandsController < ApplicationController
     @island = Island.find(params[:id])
   end
 
+  def my_islands
+    @islands = Island.where(user_id: current_user.id)
+
+  end
+
   def new
     @island = Island.new
   end
