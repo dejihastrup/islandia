@@ -1,60 +1,45 @@
-<div class="island-banner">
-  <div class="island-banner-text">
-    <h1>Welcome to <%= @island.name %></h1>
-    <h5>Host Contact: <%= @island.user.email %></h5>
-  </div>
-</div>
-<div class="island_info">
-<div class = "main-details">
-  <h5>Price: <%= @island.price %>$</h5>
-  <h5>Located at: <%= @island.location %></h5>
-  <h5>Size: <%= @island.squarekm %></h5>
-  <h5>Number of villas: <%= @island.number_of_villas%></h5>
-  <h5>Guests: <%= @island.guests%></h5>
-</div>
+<div class="island-info">
+      <h1>Welcome to <%= @island.name %></h1>
+      <h5>Host Contact: <%= @island.user.email %></h5>
+    <h5>Price: <%= @island.price %>$</h5>
+    <h5>Located at: <%= @island.location %></h5>
+    <h5>Size: <%= @island.squarekm %></h5>
+    <h5>Number of villas: <%= @island.number_of_villas%></h5>
+    <h5>Guests: <%= @island.guests%></h5>
 
-<div class = "additionals">
-  <div id = "wifi">
-    <% if @island.wifi === true %>
-        <h5>Wifi is available</h5>
-    <% else  %>
-        <h5>Wifi not available</h5>
-    <% end %>
-  </div>
+      <% if @island.wifi === true %>
+          <h5>Wifi is available</h5>
+      <% else  %>
+          <h5>Wifi not available</h5>
+      <% end %>
 
-  <div id = "helicopter">
-    <% if @island.helicopter === true %>
-        <h5>Helicopter is available</h5>
-    <% else  %>
-        <h5>Helicopter not available</h5>
-    <% end %>
-  </div>
 
-  <div id = "golf_course">
-    <% if @island.golf_course === true %>
-        <h5>Golf is available</h5>
-    <% else  %>
-        <h5>Golf not available</h5>
-    <% end %>
-  </div>
+      <% if @island.helicopter === true %>
+          <h5>Helicopter is available</h5>
+      <% else  %>
+          <h5>Helicopter not available</h5>
+      <% end %>
 
-  <div id = "private_chef">
-    <% if @island.private_chef === true %>
-        <h5>Chef is available</h5>
-    <% else  %>
-        <h5>Chef not available</h5>
-    <% end %>
-  </div>
+      <% if @island.golf_course === true %>
+          <h5>Golf is available</h5>
+      <% else  %>
+          <h5>Golf not available</h5>
+      <% end %>
 
-  <h5>Butlers: <%= @island.butlers%></h5>
-  <h5>Yachts: <%= @island.yachts%></h5>
-</div>
+      <% if @island.private_chef === true %>
+          <h5>Chef is available</h5>
+      <% else  %>
+          <h5>Chef not available</h5>
+      <% end %>
 
-<% unless current_user === @island.user %>
-  <h4><%= link_to "Book now!", new_island_booking_path(@island) %></h4>
-<% end %>
+    <h5>Butlers: <%= @island.butlers%></h5>
+    <h5>Yachts: <%= @island.yachts%></h5>
 
-<% @island.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+  <% unless current_user === @island.user %>
+    <h4><%= link_to "Book now!", new_island_booking_path(@island), class: 'btn btn-primary'%></h4>
+  <% end %>
+
+  <% @island.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
 </div>
