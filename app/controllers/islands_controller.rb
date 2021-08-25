@@ -9,7 +9,6 @@ class IslandsController < ApplicationController
 
   def my_islands
     @islands = Island.where(user_id: current_user.id)
-
   end
 
   def new
@@ -35,7 +34,9 @@ class IslandsController < ApplicationController
   end
 
   def destroy
-
+    @island = Island.find(params[:id])
+    @island.destroy
+    redirect_to my_islands_path
   end
 
   private
