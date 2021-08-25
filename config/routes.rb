@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  get '/my_islands', to: 'islands#index'
+  get '/my_islands', to: 'islands#my_islands'
 
   resources :bookings, only: [:index, :show]
 end
