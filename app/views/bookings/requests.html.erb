@@ -1,12 +1,22 @@
-<div>
-  <% @bookings.each do |booking|%>
-    <h3><%= booking.island.name %></h3>
-    <p><%= booking.user.email %> would like to stay at <%= booking.island.name %>!</p>
-    <p><%= booking.start_date %> - <%= booking.end_date %></p>
-    <% booking.island.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <p><%= link_to "Review request", edit_booking_path(booking) %></p>
-    <br><br><br>
-  <% end %>
-</div>
+<% @bookings.each do |booking|%>
+  <div class="card-product">
+      <% booking.island.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <div class="card-product-infos">
+      <h2><%= booking.island.name %></h2>
+      <p><%= booking.user.email %> would like to stay at <%= booking.island.name %>!</p><br>
+      <p><%= booking.start_date %> - <%= booking.end_date %></p><br>
+      <p><%= link_to "Review request", edit_booking_path(booking) %></p>
+      </div>
+  </div>
+<% end %>
+
+<%#
+<div class="card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+    <h2>Product name</h2>
+    <p>Product description with <strong>relevant info</strong> only.</p>
+  </div>
+</div> %>
