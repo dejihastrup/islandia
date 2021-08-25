@@ -1,1 +1,7 @@
 // Specific CSS for your home-page
+
+.image {
+background-image: url("https://images.unsplash.com/photo-1529686342540-1b43aec0df75?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+height: calc(100vh - 53px);
+background-size: cover;
+}
