@@ -1,10 +1,15 @@
 class IslandsController < ApplicationController
   def index
-    @islands = Island.all
+    @islands = Island.where.not(user_id: current_user.id)
   end
 
   def show
     @island = Island.find(params[:id])
+  end
+
+  def my_islands
+    @islands = Island.where(user_id: current_user.id)
+
   end
 
   def new

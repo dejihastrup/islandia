@@ -1,8 +1,7 @@
 class BookingsController < ApplicationController
 
   def index
-    @bookings = Booking.all
-    # where current user = user
+    @bookings = Booking.where(user_id: current_user.id)
   end
 
   def show
@@ -19,11 +18,19 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.island = Island.find(params[:island_id])
     @booking.user = current_user
+    @booking.confirmed = false
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to bookings_path
     else
       render :new
     end
+  end
+
+  def edit
+    # @booking = params[:booking_id]
+    # redirect_to show if @@booking.confirmed #visitor cannot edit if confirmed
+    # render: "host" if @booking.island.user = current_user #host can confirm or not confirm
+    #                                         #user can change booking details
   end
 
   def update
@@ -35,7 +42,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :confirmed, :user_id, :island_id, :created_at, :updated_at);
+    params.require(:booking).permit(:start_date, :end_date);
   end
    # t.datetime "created_at", precision: 6, null: false ???
    # t.datetime "updated_at", precision: 6, null: false ???
