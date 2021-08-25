@@ -1,6 +1,6 @@
 class IslandsController < ApplicationController
   def index
-    @islands = Island.all
+    @islands = Island.where.not(user_id: current_user.id)
   end
 
   def show
