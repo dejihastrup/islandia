@@ -46,8 +46,9 @@
   <h5>Yachts: <%= @island.yachts%></h5>
 </div>
 
-
-<h4><%= link_to "Book now!", new_island_booking_path(@island) %></h4>
+<% unless current_user === @island.user %>
+  <h4><%= link_to "Book now!", new_island_booking_path(@island) %></h4>
+<% end %>
 
 
 <% @island.photos.each do |photo| %>
