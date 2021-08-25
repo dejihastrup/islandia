@@ -1,0 +1,12 @@
+<div>
+  <% @bookings.each do |booking|%>
+    <h3><%= booking.island.name %></h3>
+    <p><%= booking.user.email %> would like to stay at <%= booking.island.name %>!</p>
+    <p><%= booking.start_date %> - <%= booking.end_date %></p>
+    <% booking.island.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <p><%= link_to "Review request", edit_booking_path(booking) %></p>
+    <br><br><br>
+  <% end %>
+</div>
