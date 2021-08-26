@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
 
   has_many :bookings
-  has_many :islands #host
+  has_many :islands
+  has_one_attached :photo
 end
