@@ -1,12 +1,64 @@
-  <% @bookings.each do |booking|%>
-<div class="card-product">
-    <% booking.island.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <div class="card-product-infos">
-      <h2><%= booking.island.name %></h2>
-      <p><%= booking.confirmed ? "Confirmed! Enjoy your trip ☀️ " : "Your request is still being reviewed" %></p>
-      <p><%= booking.start_date %> - <%= booking.end_date %></p>
-    </div>
+<div class="home-banner">
+  <div class="home-banner-text">
+    <h1>My Bookings</h1>
+  </div>
 </div>
-  <% end %>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<div class="container">
+  <h2>Manage your Bookings</h2>
+  <%= link_to 'Make another booking', islands_path, class: "btn btn-light" %>
+  <br>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">My Pending Bookings</a></li>
+    <li><a data-toggle="tab" href="#menu1">My Upcoming Bookings</a></li>
+  </ul>
+
+  <div class="tab-content">
+
+    <div id="home" class="tab-pane fade in active">
+      <br>
+      <% @bookings.each do |booking|%>
+        <% if booking.confirmed == false %>
+          <div class="card-product">
+            <% booking.island.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+            <div class="card-product-infos">
+              <h2><%= booking.island.name %></h2>
+              <p><%=  "Your request is still being reviewed" %></p>
+              <br>
+              <p>From: <%=booking.start_date %> - To: <%= booking.end_date %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div id="menu1" class="tab-pane fade">
+      <br>
+      <% @bookings.each do |booking|%>
+        <% if booking.confirmed == true %>
+          <div class="card-product">
+            <% booking.island.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+            <div class="card-product-infos">
+              <h2><%= booking.island.name %></h2>
+              <p><%=  "Confirmed! Enjoy your trip ☀️" %></p>
+              <br>
+              <p>From: <%=booking.start_date %> - To: <%= booking.end_date %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>
