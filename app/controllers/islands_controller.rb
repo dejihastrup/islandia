@@ -42,7 +42,7 @@ class IslandsController < ApplicationController
   def update
     @island = Island.find_by_id(params[:id])
     @island = Island.update(island_params)
-    redirect_to island_path(@island)
+    redirect_to my_islands_path(@island, anchor: "menu2")
   end
 
   def destroy
