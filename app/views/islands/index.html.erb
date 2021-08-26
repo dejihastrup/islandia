@@ -1,6 +1,6 @@
 <div class="home-banner">
   <div class="home-banner-text">
-    <h1>Welcome to Islandia</h1>
+    <h1>Discover Private Islands</h1>
   </div>
 </div>
 
@@ -8,12 +8,20 @@
     <% @islands.each do |i| %>
       <div class= "card">
         <%= cl_image_tag i.photos[0].key, crop: :fill, class: "card-img" %>
-        <%= link_to i.name, island_path(i), class: "link" %>
+        <div class = "card-info">
+          <div>
+            <%= link_to i.name, island_path(i), class: "link" %>
+            <div class = "card-main-info">
+              <i class="fas fa-user-friends"></i> <%=i.guests%>
+              <i class="fas fa-home"></i> <%=i.number_of_villas%>
+            </div>
+          </div>
+          <div class = "card-extra-info">
+            <%= i.squarekm %> km²
+            <br>
+            <%= i.price %> £/night
+          </div>
+        </div>
       </div>
     <% end %>
 </div>
-
-
-
-
-<%= link_to 'Add an island', new_island_path, class: 'button' %>

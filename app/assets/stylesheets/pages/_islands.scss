@@ -1,32 +1,17 @@
 .link {
-  color: black;
-  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  color: #000000;
 }
 
 .link:hover {
-  transition: .7s;
   text-decoration: none;
-  font-size: 25px;
-}
-
-.button {
-  color: black;
-  background-color: rgb(255, 255, 255);
-  border-radius: 15px;
-  padding: 15px;
-  text-align: center;
-}
-
-.button:hover {
-  color: rgb(54, 209, 54);
-  transition: .7s;
-  text-decoration: none;
-  font-size: 20px;
-
+  color: #000000;
 }
 
 .home-banner {
-  background-image: url("https://lp-cms-production.imgix.net/features/2013/03/shutterstock_158056682-b29fc866aed3.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850");
+  background-image: url("https://wallpaperaccess.com/full/3985814.jpg");
   height: 50%;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,14 +28,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: rgb(255, 255, 255);
-  font-size: 30px;
+  text-shadow: 1px 0 #000000;
+  letter-spacing: 1px;
 }
 
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  padding: 20px;
+  grid-gap: 32px;
+  padding: 50px;
 }
 
 @media (min-width: 768px) {
@@ -74,11 +60,6 @@
 }
 
 .card-img {
-  max-height: 120px;
-  max-width: 200px;
-}
-
-.card {
   background-size:auto;
   background-position: center;
   height: 180px;
@@ -88,11 +69,33 @@
   color: white;
   font-size: 24px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+}
+.card {
+  border: none;
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
 .card:hover {
-  background-color: bisque;
-  height: 250px;
+  background-color: rgba(92, 209, 255, 0.178);
+  transition: .7s;
+}
+
+.card-info {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-extra-info {
+  font-size: 12px;
+}
+
+.card-main-info {
+  font-size: 12px;
 }
