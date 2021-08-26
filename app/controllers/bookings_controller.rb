@@ -33,6 +33,7 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @booking = Booking.find_by_id(params[:id])
     # @booking = params[:booking_id]
     # redirect_to show if @@booking.confirmed #visitor cannot edit if confirmed
     # render: "host" if @booking.island.user = current_user #host can confirm or not confirm
@@ -40,6 +41,9 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = Booking.find_by_id(params[:id])
+    @booking.update(confirmed: true)
+    redirect_to my_islands_path
   end
 
   def destroy

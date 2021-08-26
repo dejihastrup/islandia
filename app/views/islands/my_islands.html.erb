@@ -44,16 +44,16 @@
       <br>
       <p>You have <%= @bookings.count %> private islands requests</p>
       <div>
-        <% @bookings.each do |booking|%>
+        <% @requests.each do |request|%>
           <div class="card-product">
-              <% booking.island.photos.each do |photo| %>
+              <% request.island.photos.each do |photo| %>
                   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
               <% end %>
               <div class="card-product-infos">
-              <h2><%= booking.island.name %></h2>
-              <p><%= booking.user.email %> would like to stay at <%= booking.island.name %>!</p><br>
-              <p>from <%= booking.start_date %> to <%= booking.end_date %></p><br>
-              <p><%= link_to "Review request", edit_booking_path(booking) %></p>
+              <h2><%= request.island.name %></h2>
+              <p><%= request.user.email %> would like to stay at <%= request.island.name %>!</p><br>
+              <p>from <%= request.start_date %> to <%= request.end_date %></p><br>
+              <p><%= link_to "Confirm request", booking_path(request), method: :patch %></p>
               </div>
           </div>
         <% end %>
