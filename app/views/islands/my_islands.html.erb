@@ -1,12 +1,83 @@
-<h1>My Island Listings</h1>
-
-<div class="container">
-  <ul>
-    <% @islands.each do |island| %>
-      <li class="card"><%= link_to island.name, island_path(island), class: "link" %>
-     <%= link_to "Edit", edit_island_path(island) %> <%= link_to "Delete Island", island_path(island), method: :delete,data: {confirm: "Are you sure?"} %></li>
-    <% end %>
-  </ul>
+<div class="home-banner">
+  <div class="home-banner-text">
+    <h1>My Private Islands</h1>
+  </div>
 </div>
 
-<%= link_to 'Add an island', new_island_path %> |  <%= link_to 'See Requests', my_requests_path %>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<div class="container">
+  <h2>Manage your Islands</h2>
+  <%= link_to 'Add an island', new_island_path, class: "btn btn-light add-island" %>
+  <br>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">My Islands</a></li>
+    <li><a data-toggle="tab" href="#menu1">My Island Requests</a></li>
+    <li><a data-toggle="tab" href="#menu2">My Island Bookings</a></li>
+  </ul>
+
+  <div class="tab-content">
+
+    <div id="home" class="tab-pane fade in active">
+      <br>
+      <p>You have <%= @islands.count %> private islands listed</p>
+      <div class="cards">
+        <% @islands.each do |i| %>
+          <div class= "card">
+            <%= cl_image_tag i.photos[0].key, crop: :fill, class: "card-img" %>
+            <%= link_to i.name, island_path(i), class: "link" %>
+            <%= link_to "Edit", edit_island_path(i), class: "btn btn-light"%>
+            <%= link_to "Delete Island", island_path(i), method: :delete,data: {confirm: "Are you sure?"}, class: "btn btn-light" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="menu1" class="tab-pane fade">
+      <br>
+      <p>You have <%= @bookings.count %> private islands requests</p>
+      <div>
+        <% @requests.each do |request|%>
+          <div class="card-product">
+              <% request.island.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+              <div class="card-product-infos">
+              <h2><%= request.island.name %></h2>
+              <p><%= request.user.email %> would like to stay at <%= request.island.name %>!</p><br>
+              <p>from <%= request.start_date %> to <%= request.end_date %></p><br>
+              <p><%= link_to "Confirm request", booking_path(request), method: :patch %></p>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="menu2" class="tab-pane fade">
+      <br>
+      <p>You have <%= @bookings.count %> upcoming private islands bookings</p>
+      <div>
+        <% @bookings.each do |booking|%>
+          <div class="card-product">
+              <% booking.island.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+              <div class="card-product-infos">
+              <h2><%= booking.island.name %></h2>
+              <p><%= booking.user.email %> is staying at <%= booking.island.name %>!</p><br>
+              <p>from <%= booking.start_date %> to <%= booking.end_date %></p><br>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

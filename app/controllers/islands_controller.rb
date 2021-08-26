@@ -5,10 +5,19 @@ class IslandsController < ApplicationController
 
   def show
     @island = Island.find(params[:id])
+    @booking = Booking.new
   end
 
   def my_islands
     @islands = Island.where(user_id: current_user.id)
+    @requests = Booking.all.select do |request|
+      request.island.user == current_user
+      request.confirmed == false
+    end
+    @bookings = Booking.all.select do |booking|
+      booking.island.user == current_user
+      booking.confirmed == true
+    end
   end
 
   def new
@@ -27,6 +36,7 @@ class IslandsController < ApplicationController
 
   def edit
     @island = Island.find_by_id(params[:id])
+    redirect_to island_path(@island)
   end
 
   def update
