@@ -9,6 +9,9 @@ class IslandsController < ApplicationController
 
   def my_islands
     @islands = Island.where(user_id: current_user.id)
+    @bookings = Booking.all.select do |booking|
+      booking.island.user == current_user
+    end
   end
 
   def new
