@@ -12,21 +12,27 @@
       <%= f.input :butlers, input_html: { min: '0', step: 1 } %>
       <%= f.input :yachts, input_html: { min: '0', step: 1 } %>
     </div>
+    <div class = "right-side">
+      <div class= "additional-adds">
+        <%= f.input :wifi %>
+        <%= f.input :helicopter %>
+        <%= f.input :golf_course %>
+        <%= f.input :private_chef %>
+      </div>
 
-    <div class= "additional-adds">
-      <%= f.input :wifi %>
-      <%= f.input :helicopter %>
-      <%= f.input :golf_course %>
-      <%= f.input :private_chef %>
-    </div>
+      <div class="image-adds">
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      </div>
 
-    <div class="image-adds">
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+
+      <div class = "back">
+        <%= link_to 'Back', islands_path, class: "back-button" %>
+      </div>
     </div>
 
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
 <% end %>

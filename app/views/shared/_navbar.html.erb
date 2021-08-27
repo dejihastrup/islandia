@@ -1,73 +1,44 @@
 
-<div class="topnav" id="myTopnav">
-<div>
- <a href="/" class="active">Islandia</a>
-</div>
-<div>
-
-<%= link_to "Explore", islands_path  %>
-<% if user_signed_in? %>
-<%= link_to "My Islands", my_islands_path  %>
-
-<% end %>
-
-<% if user_signed_in? %>
-<%= link_to "My Bookings", bookings_path  %>
-<% end %>
-<%# <option value="Login">Rigatoni</option>
-<option value="dave">Sign-up</option>
-<option value="My profile">Pumpernickel</option>
-<option value="Rent out your Island">Reeses</option> %>
-
-
-
-</div>
-<div>
-<% if user_signed_in? %>
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Menu
-  </button>
-  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-    <%= link_to "Sign Out",  destroy_user_session_path, method: "delete", class: "dropdown-item" %>
-    <%= link_to "My Requests", my_requests_path, class: "dropdown-item" %>
-    <%= link_to "My Islands", my_islands_path, class: "dropdown-item" %>
-    <%= link_to "Rent out your Island", new_island_path, class: "dropdown-item" %>
-    <%= current_user.email %>
-
-
-    <%# <div class="sticky-top">...</div> %>
+<div class="topnav sticky-top" id="myTopnav">
+  <div>
+    <a href="/" class="active"> Islandia <i class="fad fa-island-tropical"></i> </a>
   </div>
-</div>
-<% else %>
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Menu
-  </button>
-  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-   <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
-    <%= link_to "Sign-up", new_user_registration_path, class: "dropdown-item" %>
 
+  <div>
+    <%= link_to "Explore", islands_path  %>
 
+    <% if user_signed_in? %>
+      <%= link_to "My Islands", my_islands_path  %>
+    <% end %>
 
-    <%# <div class="sticky-top">...</div> %>
+    <% if user_signed_in? %>
+      <%= link_to "My Bookings", bookings_path  %>
+    <% end %>
   </div>
-</div>
 
-
-
-<% end %>
-<%# #backgroundimage {
-background-image: url("image3.png");
-width: 100vw;
-height: 100vh;
-background-size: 100% 100%;
-background-repeat: no-repeat;
-position: relative;
-} %>
-
-</div>
-
-
-
+  <div>
+    <% if user_signed_in? %>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+          <%= link_to "Sign Out",  destroy_user_session_path, method: "delete", class: "dropdown-item" %>
+          <%= link_to "My Requests", my_requests_path, class: "dropdown-item" %>
+          <%= link_to "My Islands", my_islands_path, class: "dropdown-item" %>
+          <%= link_to "Rent out your Island", new_island_path, class: "dropdown-item" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+          <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
+          <%= link_to "Sign-up", new_user_registration_path, class: "dropdown-item" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

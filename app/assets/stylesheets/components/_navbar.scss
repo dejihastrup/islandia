@@ -1,23 +1,10 @@
-// .navbar-lewagon {
-//   justify-content: space-between;
-//   background: white;
-// }
-
-// .navbar-lewagon .navbar-collapse {
-//   flex-grow: 0;
-// }
-
-// .navbar-lewagon .navbar-brand img {
-//   width: 100px;
-//   height: 100px;
-// }
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .topnav {
-  position: absolute;
+  position: fixed;
   background-color: transparent;
   display: flex;
   justify-content: space-between;
@@ -39,29 +26,30 @@ body {
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: rgb(255, 255, 255);
   color: black;
+  text-decoration: none;
+  transition: .7s;
 }
 
 .topnav a.active {
-  background-color: #white;
-  color: red;
-  font-size: 20px;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  font-size: 30px;
 }
 
 .topnav .icon {
   display: none;
 }
 
-// .topnav
-// {
-// // overflow: auto;
-//  position: sticky;
-// }
+
+.topnav {
+ position: sticky;
+}
+
 
 .dropdown-item {
-  color:black !important;
-
+  color: rgb(0, 0, 0);
 }
 
 // .sticky {
@@ -69,11 +57,6 @@ body {
 //   top: 0;
 //   width: 100%;
 // }
-
-// .sticky + .content {
-//   padding-top: 60px;
-// }
-
 
 
 @media screen and (max-width: 600px) {
@@ -85,7 +68,8 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -96,4 +80,34 @@ body {
     display: block;
     text-align: left;
   }
+}
+
+#dropdownMenuButton {
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 20px;
+  padding-right: 10px;
+}
+
+// .dropdown:hover #dropdownMenuButton {
+//   background-color: transparent;
+// }
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  background-color: transparent;
+  border-color: transparent;
+
+ }
+
+// .dropdown-menu .dropdown-item:hover {
+//   color: transparent;
+// }
+
+.dropdown-item:hover {
+  color: rgb(0, 0, 0);
+}
+
+#dropdownMenuButton::after {
+  display: none;
 }
