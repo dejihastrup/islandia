@@ -57,6 +57,11 @@
   width: 400px;
   background-color: rgb(192, 191, 191);
   padding: 50px;
+  align-items: center;
+}
+.submit {
+  display: flex;
+  justify-content: center;
 }
 
 .info {
