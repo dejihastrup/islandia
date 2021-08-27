@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get '/my_islands', to: 'islands#my_islands'
   get '/my_requests', to: 'bookings#requests'
 
-  resources :bookings, only: [:index, :show, :edit, :update]
+  resources :bookings, only: [:index, :show, :edit, :update, :destroy]
 end

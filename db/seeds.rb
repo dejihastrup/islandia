@@ -1,14 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 require "open-uri"
+
 Island.destroy_all
 User.destroy_all
+
 images = ["https://loveincorporated.blob.core.windows.net/contentimages/gallery/b6ecbc59-1f98-4069-b912-6dc29a8a49e1-small_islands_mihiri.jpg",
 "https://media.nationalgeographic.org/assets/photos/000/268/26833.jpg",
 "https://cdn.britannica.com/15/162615-131-0CBB2CBE/island-Caribbean.jpg",
@@ -39,6 +34,7 @@ i = 0
 end
 
 i = 0
+
 9.times do
   island = Island.new(
     name: Faker::Fantasy::Tolkien.location,

@@ -9,6 +9,10 @@ body {
   display: flex;
   justify-content: space-between;
   height: 53px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
 }
 
 .topnav a {
@@ -38,19 +42,21 @@ body {
   display: none;
 }
 
+
 .topnav {
  position: sticky;
 }
+
 
 .dropdown-item {
   color: rgb(0, 0, 0);
 }
 
-.sticky {
-  position: sticky;
-  top: 0;
-  width: 100%;
-}
+// .sticky {
+//   position: sticky;
+//   top: 0;
+//   width: 100%;
+// }
 
 
 @media screen and (max-width: 600px) {
