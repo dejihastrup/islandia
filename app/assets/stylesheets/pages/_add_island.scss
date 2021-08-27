@@ -1,15 +1,54 @@
-h1 {
+#new-island-header {
   text-align: center;
   font-family: sans-serif;
+  padding: 25px;
+  color: aliceblue;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 20px;
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.back {
+  text-align: left;
+  margin-top: 15px;
+}
+
+.back-button {
+  border: 1px solid;
+  border-radius: 20px;
+  color: black;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.back-button:hover {
+  text-decoration: none;
+  color: black;
+  border-color: rgb(0, 132, 255);
+}
+
+.form-actions:hover {
+  border-color: rgb(0, 132, 255);
+  transition: .5s;
+  font-size: 20px;
 }
 
 .form-inputs {
   width: fit-content;
   align-items: center;
   text-align: left;
-  padding-left: 10px;
+  padding: 10px;
   justify-content: center;
   position: relative;
+  display: flex;
 }
 
 .form-control {
@@ -23,22 +62,36 @@ h1 {
 .main-adds {
   border: 1px solid rgb(0, 132, 255);
   padding: 30px;
+  width: 60%;
   border-radius: 20px;
-  background-color: rgba(0, 132, 255, 0.082);
+  background-color: rgba(255, 255, 255, 0.9);
+
+}
+
+.right-side {
+  margin-left: 30px;
 }
 
 .additional-adds {
   border: 1px solid rgb(0, 132, 255);
   padding: 30px;
   border-radius: 20px;
-  background-color: rgba(0, 132, 255, 0.082);
-  margin-top: 20px
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .image-adds {
   border: 1px solid rgb(0, 132, 255);
   padding: 30px;
   border-radius: 20px;
-  background-color: rgba(0, 132, 255, 0.082);
+  background-color: rgba(255, 255, 255, 0.9);
   margin-top: 20px
+}
+
+.new-island-bg {
+  background-image: url("https://images.wallpaperscraft.com/image/island_aerial_view_ocean_128667_1600x900.jpg");
+  color: rgb(0, 0, 0);
+  text-align: center;
+  top: 0;
+  position: absolute;
+  width: 100%;
 }
