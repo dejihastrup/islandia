@@ -1,10 +1,7 @@
 
-<div class="topnav sticky-top" id="myTopnav">
+<div class="topnav" id="myTopnav">
 <div>
-
-
  <a href="/" class="active">Islandia</a>
-
 </div>
 <div>
 
@@ -36,6 +33,7 @@
     <%= link_to "My Requests", my_requests_path, class: "dropdown-item" %>
     <%= link_to "My Islands", my_islands_path, class: "dropdown-item" %>
     <%= link_to "Rent out your Island", new_island_path, class: "dropdown-item" %>
+    <%= current_user.email %>
 
 
     <%# <div class="sticky-top">...</div> %>

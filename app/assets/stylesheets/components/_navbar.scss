@@ -17,12 +17,15 @@ body {
 }
 
 .topnav {
-  // overflow: hidden;
-  position: sticky;
-  background-color: rgba(78, 75, 75, 0.1);
+  position: absolute;
+  background-color: transparent;
   display: flex;
   justify-content: space-between;
   height: 53px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
 }
 
 .topnav a {
@@ -50,26 +53,26 @@ body {
   display: none;
 }
 
-.topnav
-{
-// overflow: auto;
- position: sticky;
-}
+// .topnav
+// {
+// // overflow: auto;
+//  position: sticky;
+// }
 
 .dropdown-item {
   color:black !important;
 
 }
 
-.sticky {
-  position: sticky;
-  top: 0;
-  width: 100%;
-}
+// .sticky {
+//   position: sticky;
+//   top: 0;
+//   width: 100%;
+// }
 
-.sticky + .content {
-  padding-top: 60px;
-}
+// .sticky + .content {
+//   padding-top: 60px;
+// }
 
 
 
