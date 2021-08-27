@@ -16,54 +16,71 @@
     </div>
 
     <div class="numbers">
-      <h5>Price: <%= @island.price %>$</h5>
-      <h5>Located at: <%= @island.location %></h5>
-      <h5>Size: <%= @island.squarekm %></h5>
-      <h5>Number of villas: <%= @island.number_of_villas%></h5>
-      <h5>Guests: <%= @island.guests%></h5>
+      <div>
+        <p><strong>Price</strong></p><br><br>
+        <h3>$<%= @island.price %></h3>
+      </div>
+      <div>
+        <p><strong>Location</strong></p><br><br>
+        <h3><%= @island.location %></h3>
+      </div>
+      <div>
+        <p><strong>Size</strong><p><br><br>
+        <h3><%= @island.squarekm %>km</h3>
+      </div>
+      <div>
+        <p><strong>Villas</strong></p><br><br>
+        <h3><%= @island.number_of_villas%></h3>
+      </div>
+      <div>
+        <p><strong>Guests</strong></p><br><br>
+        <h3><%= @island.guests%></h3>
+      </div>
     </div>
 
 
       <div class="icons">
-        <div class="wifi">
+        <div>
           <% if @island.wifi === true %>
-              <h5>Wifi is available</h5>
-          <% else  %>
-              <h5>Wifi not available</h5>
+            <img class="wifi" src="https://image.flaticon.com/icons/png/512/254/254613.png" alt="">
           <% end %>
         </div>
-        <div class="helicopter">
+        <div>
           <% if @island.helicopter === true %>
-              <h5>Helicopter is available</h5>
-          <% else  %>
-              <h5>Helicopter not available</h5>
+          <img class="helicopter" src="https://image.flaticon.com/icons/png/512/635/635717.png" alt="">
           <% end %>
         </div>
 
-        <div class="golf">
+        <div>
           <% if @island.golf_course === true %>
-              <h5>Golf is available</h5>
-          <% else  %>
-              <h5>Golf not available</h5>
+          <img class="golf" src="https://image.flaticon.com/icons/png/512/39/39675.png" alt="">
           <% end %>
         </div>
-        <div class="chef">
+
+        <div>
           <% if @island.private_chef === true %>
-              <h5>Chef is available</h5>
-          <% else  %>
-              <h5>Chef not available</h5>
+          <img class="chef" src="https://image.flaticon.com/icons/png/512/483/483841.png" alt="">
           <% end %>
         </div>
     </div>
 
-
-    <h5>Butlers: <%= @island.butlers%></h5>
-    <h5>Yachts: <%= @island.yachts%></h5>
+    <div class="lux">
+    <div>
+      <img src="https://image.flaticon.com/icons/png/512/1034/1034882.png" alt="">
+      <p></p>
+      <h5 style="text-align: center"><%= @island.yachts%></h5>
+    </div>
+    <div>
+      <img src="https://image.flaticon.com/icons/png/512/90/90460.png" alt="">
+      <p></p>
+      <h5  style="text-align: center"><%=@island.butlers%></h5>
+    </div>
+    </div>
   </div>
 
   <% unless current_user === @island.user %>
   <div class="book">
-  <h1>Book <%= @island.name %> Island Today! </h1>
+  <h1 style="text-align: center">Book Today! </h1>
     <div class="form-wrapper" style="margin: 0 auto;">
       <%= simple_form_for([@island, @booking]) do |f| %>
         <%= f.error_notification %>
