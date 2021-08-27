@@ -50,14 +50,62 @@
 .book, .info {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   background-color: rgb(255, 255, 255);
-  padding: 50px;
-  width: 60%;
+}
+
+.book {
+  height: 50%;
+  width: 400px;
+}
+
+.info {
+  height: 800px;
+  width: 750px;
 }
 
 .island-info {
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
+  margin: auto;
   margin-bottom: 50px;
+}
 
+.host-info {
+  margin-bottom: 30px;
+  background-color: gray;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.photo {
+  display: flex;
+  justify-content: center;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.name h2 {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: 'Sora', sans-serif;
+  color: white;
+}
+
+.numbers {
+  margin: 30px;
+}
+.icons {
+  margin: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.avatar-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
