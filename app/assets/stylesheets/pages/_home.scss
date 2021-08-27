@@ -19,8 +19,15 @@
   margin: auto;
   position: absolute;
   text-align: center;
-  left: 42%;
-  top: 50%;
+  left: 41%;
+  top: 45%;
+  z-index: 4;
+  font-size: 30px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.main-center-text {
   z-index: 4;
 }
 
@@ -28,4 +35,8 @@
   width: 100%;
   position: absolute;
   top: 0;
+}
+
+h3 {
+  color: black;
 }
