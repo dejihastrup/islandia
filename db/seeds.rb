@@ -14,12 +14,23 @@ images = ["https://loveincorporated.blob.core.windows.net/contentimages/gallery/
 "https://www.treehugger.com/thmb/-mkq1qD-UBWiYgXiEpWwsJXB72E=/3840x2160/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1297446212-36c24576541c43e7956a67f175a9b8fa.jpg",
 "https://cupe.ca/sites/cupe/files/shutterstock_295936574.jpg"]
 
+profile_pic = ["https://ca.slack-edge.com/T02NE0241-U027PS8MXNF-9a3c39476904-512",
+"https://ca.slack-edge.com/T02NE0241-U027J690AUS-621db6d8850a-512",
+"https://ca.slack-edge.com/T02NE0241-U0274QU963Z-1fc7c890a6b3-512",
+"https://ca.slack-edge.com/T02NE0241-U027P24RMV0-ddba0aec7d76-512",
+"https://ca.slack-edge.com/T02NE0241-US9HKE23B-90eafe949883-512"]
+
+i = 0
 5.times do
   user = User.new(
     email: Faker::Internet.email,
-    password: 'grumble'
+    password: 'grumble',
+    username: Faker::Internet.username
   )
+  file = URI.open(profile_pic[i])
+  user.photo.attach(io: file, filename: 'nes.jpeg', content_type: 'image/jpeg')
   user.save!
+  i += 1
 end
 
 i = 0
