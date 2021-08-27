@@ -1,10 +1,4 @@
-.show-div {
-    margin-top: 20px;
-}
 
-.container {
-width: 80% !important;
-}
 
 // .banner {
 //   position: relative;
@@ -23,7 +17,7 @@ width: 80% !important;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 80px;
   font-weight: bold;
-  font-family: 'Sora', sans-serif;;
+  font-family: 'Sora', sans-serif;
 }
 
 .banner {
@@ -32,7 +26,7 @@ width: 80% !important;
   background-position: center;
   text-align: center;
   margin-bottom: 60px;
-  box-shadow: 0px 3px 8px #8b8b8b;;
+  box-shadow: 0px 3px 8px #8b8b8b;
 }
 
 // .container, .container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
@@ -43,22 +37,109 @@ width: 80% !important;
 //     margin-left: auto;
 // }
 
-.island-info {
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background-color: white;
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  text-align: center;
-  border-radius: 10px;
-}
+// .island-info {
+//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+//   background-color: white;
+//   margin: auto;
+//   margin-top: 50px;
+//   margin-bottom: 50px;
+//   text-align: center;
+//   border-radius: 10px;
+// }
 
 .book, .info {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background-color: rgb(219, 219, 219);
-  padding: 50px;
-  margin: 10px;
+  border-radius: 5px;
 }
+
+.book {
+  height: 50%;
+  width: 400px;
+  background-color: rgb(192, 191, 191);
+  padding: 50px;
+}
+
 .info {
-  margin-right: 150px;
+  height: 800px;
+  width: 750px;
+  background-color: rgb(255, 255, 255);
+}
+
+.island-info {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.host-info {
+  margin-bottom: 30px;
+  background-color: rgb(192, 191, 191);
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.photo {
+  display: flex;
+  justify-content: center;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.name h2 {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: 'Sora', sans-serif;
+  color: white;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+}
+
+.numbers {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+
+.icons {
+  margin: 30px;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.wifi, .helicopter, .golf, .chef {
+  width: 60px;
+  height: 60px;
+}
+
+.book h1 {
+  font-family: 'Sora', sans-serif;
+  color: white;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+}
+
+.lux {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 40px;
+  padding-bottom: 0;
+}
+
+.lux img {
+  width: 100px;
+  height: 100px;
+  padding-bottom: 20px;
+}
+
+.avatar-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
