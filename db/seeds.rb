@@ -1,5 +1,6 @@
 require 'faker'
 require "open-uri"
+require 'pry'
 
 Island.destroy_all
 User.destroy_all
@@ -14,45 +15,218 @@ images = ["https://loveincorporated.blob.core.windows.net/contentimages/gallery/
 "https://www.treehugger.com/thmb/-mkq1qD-UBWiYgXiEpWwsJXB72E=/3840x2160/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1297446212-36c24576541c43e7956a67f175a9b8fa.jpg",
 "https://cupe.ca/sites/cupe/files/shutterstock_295936574.jpg"]
 
-profile_pic = ["https://ca.slack-edge.com/T02NE0241-U027PS8MXNF-9a3c39476904-512",
-"https://ca.slack-edge.com/T02NE0241-U027J690AUS-621db6d8850a-512",
-"https://ca.slack-edge.com/T02NE0241-U0274QU963Z-1fc7c890a6b3-512",
-"https://ca.slack-edge.com/T02NE0241-U027P24RMV0-ddba0aec7d76-512",
-"https://ca.slack-edge.com/T02NE0241-US9HKE23B-90eafe949883-512"]
+profile_pic = ["https://static.wikia.nocookie.net/meangirls/images/0/0e/Gretchen_Wienners_3.jpg/revision/latest?cb=20160126053125",
+"https://avatars.githubusercontent.com/u/72709071?v=4",
+"https://avatars.githubusercontent.com/u/87001622?v=4",
+"https://avatars.githubusercontent.com/u/85967924?v=4",
+"https://ca.slack-edge.com/T02NE0241-U016TFXV4S2-3098e8dd7db1-512"]
 
-i = 0
-5.times do
-  user = User.new(
-    email: Faker::Internet.email,
-    password: 'grumble',
-    username: Faker::Internet.username
-  )
-  file = URI.open(profile_pic[i])
-  user.photo.attach(io: file, filename: 'nes.jpeg', content_type: 'image/jpeg')
-  user.save!
-  i += 1
-end
+user_1 = User.create(
+  email: 'gretchen@google.com',
+  password: 'grumble',
+  username: 'Gretchen'
+)
+  file1 = URI.open(profile_pic[0])
+  user_1.photo.attach(io: file1, filename: 'nes.jpeg', content_type: 'image/jpeg')
 
-i = 0
 
-9.times do
-  island = Island.new(
-    name: Faker::Fantasy::Tolkien.location,
-    price: rand(500_000..1_000_000),
+user_2 = User.create(
+  email: 'deji@google.com',
+  password: 'grumble',
+  username: 'Deji'
+)
+  file2 = URI.open(profile_pic[1])
+  user_2.photo.attach(io: file2, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+user_3 = User.create(
+  email: 'mario@google.com',
+  password: 'grumble',
+  username: 'Mario'
+)
+  file3 = URI.open(profile_pic[2])
+  user_3.photo.attach(io: file3, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+user_4 = User.create(
+  email: 'cornelius@google.com',
+  password: 'grumble',
+  username: 'Cornelius'
+)
+  file4 = URI.open(profile_pic[3])
+  user_4.photo.attach(io: file4, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+user_5 = User.create(
+  email: 'bruno@google.com',
+  password: 'grumble',
+  username: 'Bruno'
+)
+  file5 = URI.open(profile_pic[4])
+  user_5.photo.attach(io: file5, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+
+island_1 = Island.create!(
+    name: "Goblin Town",
+    price: 5_000,
     location: Faker::WorldCup.team,
-    squarekm: rand(30_000..200_000),
-    number_of_villas: rand(20..50),
-    guests: rand(50..200),
+    squarekm: 5_000,
+    number_of_villas: 3,
+    guests: 40,
+    wifi: true,
+    helicopter: false,
+    golf_course: false,
+    private_chef: false,
+    butlers: 1,
+    yachts: 0,
+    user_id: User.all.sample.id
+)
+
+    file6 = URI.open(images[0])
+    island_1.photos.attach(io: file6, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+island_2 = Island.create!(
+    name: "Boujee Island",
+    price: 25_000,
+    location: Faker::WorldCup.team,
+    squarekm: 50_000,
+    number_of_villas: 10,
+    guests: 200,
+    wifi: true,
+    helicopter: true,
+    golf_course: true,
+    private_chef: true,
+    butlers: 20,
+    yachts: 8,
+    user_id: User.all.sample.id
+)
+    file7 = URI.open(images[1])
+    island_2.photos.attach(io: file7, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+
+island_3 = Island.create!(
+    name: Faker::Fantasy::Tolkien.location,
+    price: 12_000,
+    location: Faker::WorldCup.team,
+    squarekm: 8_000,
+    number_of_villas: rand(0..10),
+    guests: 20,
     wifi: [true, false].sample,
     helicopter: [true, false].sample,
     golf_course: [true, false].sample,
     private_chef: [true, false].sample,
-    butlers: rand(30..60),
-    yachts: rand(10..20),
+    butlers: rand(0..10),
+    yachts: rand(0..10),
     user_id: User.all.sample.id
-  )
-  file = URI.open(images[i])
-  island.photos.attach(io: file, filename: 'nes.jpeg', content_type: 'image/jpeg')
-  island.save!
-  i += 1
-end
+)
+    file8 = URI.open(images[2])
+    island_3.photos.attach(io: file8, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+
+island_4 = Island.create!(
+    name: Faker::Fantasy::Tolkien.location,
+    price: 9_000,
+    location: Faker::WorldCup.team,
+    squarekm: 5_000,
+    number_of_villas: rand(0..10),
+    guests: 30,
+    wifi: [true, false].sample,
+    helicopter: [true, false].sample,
+    golf_course: [true, false].sample,
+    private_chef: [true, false].sample,
+    butlers: rand(0..10),
+    yachts: rand(0..10),
+    user_id: User.all.sample.id
+)
+    file9 = URI.open(images[3])
+    island_4.photos.attach(io: file9, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+
+island_5 = Island.create!(
+    name: Faker::Fantasy::Tolkien.location,
+    price: 30_000,
+    location: Faker::WorldCup.team,
+    squarekm: 20_000,
+    number_of_villas: 10,
+    guests: 300,
+    wifi: [true, false].sample,
+    helicopter: [true, false].sample,
+    golf_course: [true, false].sample,
+    private_chef: [true, false].sample,
+    butlers: rand(0..10),
+    yachts: rand(0..10),
+    user_id: User.all.sample.id
+)
+    file10 = URI.open(images[4])
+    island_5.photos.attach(io: file10, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+island_6 = Island.create!(
+    name: Faker::Fantasy::Tolkien.location,
+    price: 17_000,
+    location: Faker::WorldCup.team,
+    squarekm: 8_000,
+    number_of_villas: rand(0..10),
+    guests: 25,
+    wifi: [true, false].sample,
+    helicopter: [true, false].sample,
+    golf_course: [true, false].sample,
+    private_chef: [true, false].sample,
+    butlers: rand(0..10),
+    yachts: rand(0..10),
+    user_id: User.all.sample.id
+)
+    file11 = URI.open(images[5])
+    island_6.photos.attach(io: file11, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+
+island_7 = Island.create!(
+    name: Faker::Fantasy::Tolkien.location,
+    price: 21_000,
+    location: Faker::WorldCup.team,
+    squarekm: 16_000,
+    number_of_villas: rand(0..10),
+    guests: 25,
+    wifi: [true, false].sample,
+    helicopter: [true, false].sample,
+    golf_course: [true, false].sample,
+    private_chef: [true, false].sample,
+    butlers: rand(0..10),
+    yachts: rand(0..10),
+    user_id: User.all.sample.id
+)
+    file12 = URI.open(images[6])
+    island_7.photos.attach(io: file12, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+
+island_8 = Island.create!(
+    name: Faker::Fantasy::Tolkien.location,
+    price: 15_000,
+    location: Faker::WorldCup.team,
+    squarekm: 6_000,
+    number_of_villas: rand(0..10),
+    guests: 10,
+    wifi: [true, false].sample,
+    helicopter: [true, false].sample,
+    golf_course: [true, false].sample,
+    private_chef: [true, false].sample,
+    butlers: rand(0..10),
+    yachts: rand(0..10),
+    user_id: User.all.sample.id
+)
+    file13 = URI.open(images[7])
+    island_8.photos.attach(io: file13, filename: 'nes.jpeg', content_type: 'image/jpeg')
+
+island_9 = Island.create!(
+    name: Faker::Fantasy::Tolkien.location,
+    price: 9_000,
+    location: Faker::WorldCup.team,
+    squarekm: 6_000,
+    number_of_villas: rand(0..10),
+    guests: 15,
+    wifi: [true, false].sample,
+    helicopter: [true, false].sample,
+    golf_course: [true, false].sample,
+    private_chef: [true, false].sample,
+    butlers: rand(0..10),
+    yachts: rand(0..10),
+    user_id: User.all.sample.id
+)
+    file14 = URI.open(images[8])
+    island_9.photos.attach(io: file14, filename: 'nes.jpeg', content_type: 'image/jpeg')
