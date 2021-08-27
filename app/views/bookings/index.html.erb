@@ -14,8 +14,7 @@
 
 
 <div class="container">
-  <h2>Manage your Bookings</h2>
-  <%= link_to 'Make another booking', islands_path, class: "btn btn-light" %>
+  <h2>Manage My Bookings <%= link_to 'Make another booking', islands_path, class: "btn btn-info btn-lg float-right", id: "button-create" %></h2>
   <br>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">My Pending Bookings</a></li>
@@ -26,17 +25,18 @@
 
     <div id="home" class="tab-pane fade in active">
       <br>
-      <% @bookings.each do |booking|%>
-        <% if booking.confirmed == false %>
+      <p>You have <%= pluralize @requests.count, "pending booking" %></p>
+      <% @requests.each do |request|%>
+        <% if request.confirmed == false %>
           <div class="card-product">
-            <% booking.island.photos.each do |photo| %>
+            <% request.island.photos.each do |photo| %>
               <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
             <% end %>
             <div class="card-product-infos">
-              <h2><%= booking.island.name %></h2>
+              <h2><%= link_to request.island.name, island_path(request.island) %></h2>
               <p><%=  "Your request is still being reviewed" %></p>
               <br>
-              <p>From: <%=booking.start_date %> - To: <%= booking.end_date %></p>
+              <p>From: <%=request.start_date %> - To: <%= request.end_date %></p>
             </div>
           </div>
         <% end %>
@@ -45,6 +45,7 @@
 
     <div id="menu1" class="tab-pane fade">
       <br>
+      <p>You have <%= pluralize @bookings.count, "upcoming booking" %></p>
       <% @bookings.each do |booking|%>
         <% if booking.confirmed == true %>
           <div class="card-product">
@@ -52,7 +53,7 @@
               <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
             <% end %>
             <div class="card-product-infos">
-              <h2><%= booking.island.name %></h2>
+              <h2><%= link_to booking.island.name, island_path(booking.island) %></h2>
               <p><%=  "Confirmed! Enjoy your trip ☀️" %></p>
               <br>
               <p>From: <%=booking.start_date %> - To: <%= booking.end_date %></p>

@@ -1,14 +1,19 @@
 class BookingsController < ApplicationController
 
   def index
-    @bookings = Booking.where(user_id: current_user.id)
-  end
-
-  def requests
     @bookings = Booking.all.select do |booking|
-      booking.island.user == current_user
+    (booking.user == current_user) && (booking.confirmed == true)
+    end
+    @requests = Booking.all.select do |request|
+    (request.user == current_user) && (request.confirmed == false)
     end
   end
+
+  # def requests
+  #   @bookings = Booking.all.select do |booking|
+  #     booking.island.user == current_user
+  #   end
+  # end
 
   def show
     @booking = Booking.find(params[:id])
@@ -47,6 +52,9 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to my_islands_path
   end
 
   private
