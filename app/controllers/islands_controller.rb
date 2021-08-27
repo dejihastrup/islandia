@@ -11,12 +11,10 @@ class IslandsController < ApplicationController
   def my_islands
     @islands = Island.where(user_id: current_user.id)
     @requests = Booking.all.select do |request|
-      request.island.user == current_user
-      request.confirmed == false
+    (request.island.user == current_user) && (request.confirmed == false)
     end
     @bookings = Booking.all.select do |booking|
-      booking.island.user == current_user
-      booking.confirmed == true
+    (booking.island.user == current_user) && (booking.confirmed == true)
     end
   end
 
@@ -36,13 +34,12 @@ class IslandsController < ApplicationController
 
   def edit
     @island = Island.find_by_id(params[:id])
-    redirect_to island_path(@island)
   end
 
   def update
     @island = Island.find_by_id(params[:id])
     @island = Island.update(island_params)
-    redirect_to my_islands_path(@island, anchor: "menu2")
+    redirect_to my_islands_path(@island)
   end
 
   def destroy

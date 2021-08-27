@@ -1,7 +1,9 @@
 class BookingsController < ApplicationController
 
   def index
-    @bookings = Booking.where(user_id: current_user.id)
+    @bookings = Booking.all.select do |booking|
+      booking.user == current_user
+    end
   end
 
   def requests
@@ -23,8 +25,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.island = Island.find(params[:island_id])
-    @booking.user = current_user
-    @booking.confirmed = false
+    (@booking.user = current_user) && (@booking.confirmed = false)
     if @booking.save
       redirect_to bookings_path
     else

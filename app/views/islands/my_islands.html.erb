@@ -29,14 +29,27 @@
       <br>
       <p>You have <%= @islands.count %> private islands listed</p>
       <div class="cards">
-        <% @islands.each do |i| %>
-          <div class= "card">
-            <%= cl_image_tag i.photos[0].key, crop: :fill, class: "card-img" %>
-            <%= link_to i.name, island_path(i), class: "link" %>
-            <%= link_to "Edit", edit_island_path(i), class: "btn btn-light"%>
+          <% @islands.each do |i| %>
+            <div class= "card">
+              <%= cl_image_tag i.photos[0].key, crop: :fill, class: "card-img" %>
+              <div class = "card-info">
+                <div>
+                  <%= link_to i.name, island_path(i), class: "link" %>
+                  <div class = "card-main-info">
+                    <i class="fas fa-user-friends"></i> <%=i.guests%>
+                    <i class="fas fa-home"></i> <%=i.number_of_villas%>
+                  </div>
+                </div>
+                <div class = "card-extra-info">
+                  <%= i.squarekm %> km²
+                  <br>
+                  <%= i.price %> £/night
+                </div>
+              </div>
+                          <%= link_to "Edit", edit_island_path(i), class: "btn btn-light"%>
             <%= link_to "Delete Island", island_path(i), method: :delete,data: {confirm: "Are you sure?"}, class: "btn btn-light" %>
-          </div>
-        <% end %>
+            </div>
+          <% end %>
       </div>
     </div>
 
@@ -59,6 +72,8 @@
         <% end %>
       </div>
     </div>
+
+
 
     <div id="menu2" class="tab-pane fade">
       <br>
