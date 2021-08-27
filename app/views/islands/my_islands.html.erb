@@ -14,20 +14,20 @@
 
 
 <div class="container">
-  <h2>Manage your Islands</h2>
-  <%= link_to 'Add an island', new_island_path, class: "btn btn-light add-island" %>
+  <h2>Manage My Islands <%= link_to 'Add an island', new_island_path, class: "btn btn-info btn-lg float-right", id: "button-create" %></h2>
+
   <br>
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">My Islands</a></li>
-    <li><a data-toggle="tab" href="#menu1">My Island Requests</a></li>
-    <li><a data-toggle="tab" href="#menu2">My Island Bookings</a></li>
+    <li class="active" id="tab1"><a data-toggle="tab" href="#home">My Islands</a></li>
+    <li id="tab2"><a data-toggle="tab" href="#menu1">My Island Requests</a></li>
+    <li id="tab3"><a data-toggle="tab" href="#menu2">My Island Bookings</a></li>
   </ul>
 
   <div class="tab-content">
-
+    <%= console %>
     <div id="home" class="tab-pane fade in active">
       <br>
-      <p>You have <%= @islands.count %> private islands listed</p>
+      <p>You have <%= pluralize @islands.count, "private island" %> listed</p>
       <div class="cards">
           <% @islands.each do |i| %>
             <div class= "card">
@@ -46,8 +46,8 @@
                   <%= i.price %> £/night
                 </div>
               </div>
-                          <%= link_to "Edit", edit_island_path(i), class: "btn btn-light"%>
-            <%= link_to "Delete Island", island_path(i), method: :delete,data: {confirm: "Are you sure?"}, class: "btn btn-light" %>
+              <%= link_to "Edit", edit_island_path(i), class: "btn btn-light"%>
+              <%= link_to "Delete Island", island_path(i), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-light" %>
             </div>
           <% end %>
       </div>
@@ -55,7 +55,7 @@
 
     <div id="menu1" class="tab-pane fade">
       <br>
-      <p>You have <%= @requests.count %> private islands requests</p>
+      <p>You have <%= pluralize @requests.count, "private island request" %></p>
       <div>
         <% @requests.each do |request|%>
           <div class="card-product">
@@ -63,10 +63,10 @@
                   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
               <% end %>
               <div class="card-product-infos">
-              <h2><%= request.island.name %></h2>
+              <h2><%= link_to request.island.name, island_path(request.island) %></h2>
               <p><%= request.user.email %> would like to stay at <%= request.island.name %>!</p><br>
               <p>from <%= request.start_date %> to <%= request.end_date %></p><br>
-              <p><%= link_to "Confirm request", booking_path(request), method: :patch %></p>
+              <p><%= link_to "Confirm", booking_path(request, anchor: "tab3"), method: :patch %> | <%= link_to "Delete", booking_path(request, anchor: "tab2"), method: :delete, data: {confirm: "Are you sure?"} %></p>
               </div>
           </div>
         <% end %>
@@ -77,7 +77,7 @@
 
     <div id="menu2" class="tab-pane fade">
       <br>
-      <p>You have <%= @bookings.count %> upcoming private islands bookings</p>
+      <p>You have <%= pluralize @bookings.count, "upcoming private island bookings" %></p>
       <div>
         <% @bookings.each do |booking|%>
           <div class="card-product">
@@ -85,7 +85,7 @@
                   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
               <% end %>
               <div class="card-product-infos">
-              <h2><%= booking.island.name %></h2>
+              <h2><%= link_to booking.island.name, island_path(booking.island) %></h2>
               <p><%= booking.user.email %> is staying at <%= booking.island.name %>!</p><br>
               <p>from <%= booking.start_date %> to <%= booking.end_date %></p><br>
               </div>
@@ -96,3 +96,17 @@
 
   </div>
 </div>
+
+<script>
+  let anchor = document.location.toString().split("#")[1]
+  if(anchor) {
+    document.getElementById("home").classList.remove("active", "in", "show")
+    document.getElementById("menu1").classList.remove("active", "in", "show")
+    document.getElementById("menu2").classList.remove("active", "in", "show")
+    document.getElementById("menu1").classList.add("active", "in", "show")
+    document.querySelector("#tab1").classList.remove("active")
+    document.querySelector("#tab2").classList.remove("active")
+    document.querySelector("#tab3").classList.remove("active")
+    document.querySelector("#tab2").classList.add("active")
+  }
+</script>

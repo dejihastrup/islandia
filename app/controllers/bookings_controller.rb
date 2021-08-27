@@ -2,15 +2,18 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all.select do |booking|
-      booking.user == current_user
+    (booking.user == current_user) && (booking.confirmed == true)
+    end
+    @requests = Booking.all.select do |request|
+    (request.user == current_user) && (request.confirmed == false)
     end
   end
 
-  def requests
-    @bookings = Booking.all.select do |booking|
-      booking.island.user == current_user
-    end
-  end
+  # def requests
+  #   @bookings = Booking.all.select do |booking|
+  #     booking.island.user == current_user
+  #   end
+  # end
 
   def show
     @booking = Booking.find(params[:id])
@@ -25,7 +28,8 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.island = Island.find(params[:island_id])
-    (@booking.user = current_user) && (@booking.confirmed = false)
+    @booking.user = current_user
+    @booking.confirmed = false
     if @booking.save
       redirect_to bookings_path
     else
@@ -48,6 +52,9 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to my_islands_path
   end
 
   private
