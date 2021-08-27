@@ -3,67 +3,62 @@
     <h1><%= @island.name.upcase %></h1>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="info col-md-6">
-        <%= cl_image_path @island.user.photo.key, height: 300, crop: :fill %>
-        <h5>Host Contact: <%= @island.user.email %></h5>
-        <h5>Price: <%= @island.price %>$</h5>
-        <h5>Located at: <%= @island.location %></h5>
-        <h5>Size: <%= @island.squarekm %></h5>
-        <h5>Number of villas: <%= @island.number_of_villas%></h5>
-        <h5>Guests: <%= @island.guests%></h5>
 
-          <% if @island.wifi === true %>
-              <h5>Wifi is available</h5>
-          <% else  %>
-              <h5>Wifi not available</h5>
-          <% end %>
+<div class="island-info">
+  <div class="info">
+    <%= cl_image_path @island.user.photo.key, height: 300, crop: :fill %>
+    <h5>Host Contact: <%= @island.user.email %></h5>
+    <h5>Price: <%= @island.price %>$</h5>
+    <h5>Located at: <%= @island.location %></h5>
+    <h5>Size: <%= @island.squarekm %></h5>
+    <h5>Number of villas: <%= @island.number_of_villas%></h5>
+    <h5>Guests: <%= @island.guests%></h5>
 
-
-          <% if @island.helicopter === true %>
-              <h5>Helicopter is available</h5>
-          <% else  %>
-              <h5>Helicopter not available</h5>
-          <% end %>
-
-          <% if @island.golf_course === true %>
-              <h5>Golf is available</h5>
-          <% else  %>
-              <h5>Golf not available</h5>
-          <% end %>
-
-          <% if @island.private_chef === true %>
-              <h5>Chef is available</h5>
-          <% else  %>
-              <h5>Chef not available</h5>
-          <% end %>
-
-        <h5>Butlers: <%= @island.butlers%></h5>
-        <h5>Yachts: <%= @island.yachts%></h5>
-
-      <% unless current_user === @island.user %>
-        <h4><%= link_to "Book now!", new_island_booking_path(@island), class: 'btn btn-primary'%></h4>
+      <% if @island.wifi === true %>
+          <h5>Wifi is available</h5>
+      <% else  %>
+          <h5>Wifi not available</h5>
       <% end %>
-      </div>
 
-      <div class="book col-md-4">
-        <h1>Book <%= @island.name %> Island Today! </h1>
-        <div class="container">
-          <div class="form-wrapper" style="margin: 0 auto;">
-            <%= simple_form_for([@island, @booking]) do |f| %>
-              <%= f.error_notification %>
-              <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-              <div class="form-inputs">
-                <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-                <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-              </div>
-              <div class="form-actions">
-                <%= f.button :submit, class: "btn btn-primary" %>
-              </div>
-            <% end %>
-          </div>
+
+      <% if @island.helicopter === true %>
+          <h5>Helicopter is available</h5>
+      <% else  %>
+          <h5>Helicopter not available</h5>
+      <% end %>
+
+      <% if @island.golf_course === true %>
+          <h5>Golf is available</h5>
+      <% else  %>
+          <h5>Golf not available</h5>
+      <% end %>
+
+      <% if @island.private_chef === true %>
+          <h5>Chef is available</h5>
+      <% else  %>
+          <h5>Chef not available</h5>
+      <% end %>
+
+    <h5>Butlers: <%= @island.butlers%></h5>
+    <h5>Yachts: <%= @island.yachts%></h5>
+  </div>
+
+  <% unless current_user === @island.user %>
+  <div class="book">
+  <h1>Book <%= @island.name %> Island Today! </h1>
+    <div class="form-wrapper" style="margin: 0 auto;">
+      <%= simple_form_for([@island, @booking]) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <div class="form-inputs">
+          <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
         </div>
-      </div>
+        <div class="form-actions">
+          <%= f.button :submit, class: "btn btn-primary" %>
+        </div>
     </div>
+    <% end %>
+  </div>
+  <% end %>
 </div>

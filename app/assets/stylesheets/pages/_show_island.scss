@@ -1,10 +1,4 @@
-.show-div {
-    margin-top: 20px;
-}
 
-.container {
-width: 80% !important;
-}
 
 // .banner {
 //   position: relative;
@@ -23,7 +17,7 @@ width: 80% !important;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 80px;
   font-weight: bold;
-  font-family: 'Sora', sans-serif;;
+  font-family: 'Sora', sans-serif;
 }
 
 .banner {
@@ -32,7 +26,7 @@ width: 80% !important;
   background-position: center;
   text-align: center;
   margin-bottom: 60px;
-  box-shadow: 0px 3px 8px #8b8b8b;;
+  box-shadow: 0px 3px 8px #8b8b8b;
 }
 
 // .container, .container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
@@ -43,22 +37,27 @@ width: 80% !important;
 //     margin-left: auto;
 // }
 
-.island-info {
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background-color: white;
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  text-align: center;
-  border-radius: 10px;
-}
+// .island-info {
+//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+//   background-color: white;
+//   margin: auto;
+//   margin-top: 50px;
+//   margin-bottom: 50px;
+//   text-align: center;
+//   border-radius: 10px;
+// }
 
 .book, .info {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background-color: rgb(219, 219, 219);
+  background-color: rgb(255, 255, 255);
   padding: 50px;
-  margin: 10px;
+  width: 60%;
 }
-.info {
-  margin-right: 150px;
+
+.island-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+
 }
